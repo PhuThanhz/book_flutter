@@ -1,10 +1,13 @@
 import 'package:book_flutter/Components/BookCard.dart';
 import 'package:book_flutter/Components/BookTitle.dart';
 import 'package:book_flutter/Models/Data.dart';
+import 'package:book_flutter/Pages/BookDetails/BookDetails.dart';
 import 'package:book_flutter/Pages/HomePage/Widgets/AppBar.dart';
 import 'package:book_flutter/Pages/HomePage/Widgets/CategoryWidget.dart';
 import 'package:book_flutter/Pages/HomePage/Widgets/MyInputTextField.dart';
+import 'package:book_flutter/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -111,7 +114,9 @@ class HomePage extends StatelessWidget {
                               title:
                                   e.title ?? 'Unknown Title', // Kiểm tra null
                               coverUrl: e.coverUrl ?? '', // Kiểm tra null
-                              ontap: () {},
+                              ontap: () {
+                                Get.to(const BookDetails());
+                              },
                             ),
                           )
                           .toList(),
