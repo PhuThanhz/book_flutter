@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Đừng quên import thư viện này
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BookTitle extends StatelessWidget {
   final String title;
@@ -8,6 +8,7 @@ class BookTitle extends StatelessWidget {
   final int price;
   final String rating;
   final int totalRating;
+  final VoidCallback ontap;
 
   const BookTitle({
     super.key,
@@ -17,6 +18,7 @@ class BookTitle extends StatelessWidget {
     required this.price,
     required this.rating,
     required this.totalRating,
+    required this.ontap,
   });
 
   @override
@@ -24,7 +26,7 @@ class BookTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: InkWell(
-        onTap: () {},
+        onTap: ontap,
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -49,9 +51,12 @@ class BookTitle extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
+                  child: Image.network(
                     coverUrl,
                     width: 100,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.broken_image, color: Colors.grey);
+                    },
                   ),
                 ),
               ),
@@ -67,12 +72,12 @@ class BookTitle extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      "By :$author",
+                      "By: $author",
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      "Price : $price",
+                      "Price: $price",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: Theme.of(context).colorScheme.secondary,
                           ),
@@ -80,16 +85,13 @@ class BookTitle extends StatelessWidget {
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        SvgPicture.asset(
-                            "Assets/Icons/star.svg"), // Đảm bảo thư viện flutter_svg đã được thêm
-                        const SizedBox(
-                            width: 4), // Thêm khoảng cách giữa biểu tượng và số
+                        SvgPicture.asset("Assets/Icons/star.svg"),
+                        const SizedBox(width: 4),
                         Text(
                           rating,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        const SizedBox(
-                            width: 4), // Thêm khoảng cách giữa số và nhãn
+                        const SizedBox(width: 4),
                         Text(
                           "($totalRating ratings)",
                           style: Theme.of(context).textTheme.labelMedium,

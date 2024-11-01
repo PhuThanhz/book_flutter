@@ -2,8 +2,26 @@ import 'package:book_flutter/Components/BackButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BookDeailsHeader extends StatelessWidget {
-  const BookDeailsHeader({super.key});
+class BookDetailsHeader extends StatelessWidget {
+  final String coverUrl;
+  final String title;
+  final String author;
+  final String description;
+  final String rating;
+  final String pages;
+  final String language;
+  final String audioLen;
+
+  const BookDetailsHeader(
+      {super.key,
+      required this.coverUrl,
+      required this.title,
+      required this.author,
+      required this.description,
+      required this.rating,
+      required this.pages,
+      required this.language,
+      required this.audioLen});
 
   @override
   Widget build(BuildContext context) {
@@ -27,34 +45,36 @@ class BookDeailsHeader extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                "Assets/Images/Give and Take.jpg",
+                coverUrl,
                 width: 170,
               ),
             )
           ],
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Text(
-          "Beach Town : Apocalypse",
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: Theme.of(context).colorScheme.background,
-              ),
-        ),
-        Text(
-          "Author : Thanh Phu",
-          style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                color: Theme.of(context).colorScheme.background,
-              ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          "day la mot cuon sach rat la hay luon do",
+          title,
+          maxLines: 1,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: Theme.of(context).colorScheme.background,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: Theme.of(context).colorScheme.surface,
               ),
         ),
-        SizedBox(height: 10),
+        Text(
+          "Author : $author",
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: Theme.of(context).colorScheme.surface,
+              ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          description,
+          maxLines: 2,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: Theme.of(context).colorScheme.surface,
+              ),
+        ),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -63,13 +83,13 @@ class BookDeailsHeader extends StatelessWidget {
                 Text(
                   "Rating",
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
                 Text(
-                  "4.7",
+                  rating,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
               ],
@@ -79,13 +99,13 @@ class BookDeailsHeader extends StatelessWidget {
                 Text(
                   "Pages",
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
                 Text(
-                  "203",
+                  pages,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
               ],
@@ -95,13 +115,13 @@ class BookDeailsHeader extends StatelessWidget {
                 Text(
                   "Language",
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
                 Text(
-                  "ENG",
+                  language,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
               ],
@@ -111,13 +131,13 @@ class BookDeailsHeader extends StatelessWidget {
                 Text(
                   "Audio",
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
                 Text(
-                  "2 hr",
+                  audioLen,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                 ),
               ],

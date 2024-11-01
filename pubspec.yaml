@@ -37,6 +37,16 @@ dependencies:
   get: ^4.6.6
   flutter_svg: ^2.0.10+1
   syncfusion_flutter_pdfviewer: ^27.1.51
+  lottie: ^3.1.2
+  firebase_core: ^3.6.0
+  google_sign_in: ^6.2.1
+  firebase_auth: ^5.3.1
+  fluttertoast: ^8.2.8
+  image_picker: ^1.1.2
+  firebase_storage: ^12.3.3
+  uuid: ^4.5.1
+  file_picker: ^5.2.2
+  cloud_firestore: ^5.3.0 # Phiên bản mới nhất tại thời điểm hiện tại
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +69,7 @@ flutter:
   assets:
     - Assets/Images/
     - Assets/Icons/
+    - Assets/Animation/
 
   #   - images/a_dot_ham.jpeg
 

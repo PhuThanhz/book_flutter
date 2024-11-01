@@ -1,11 +1,11 @@
-import 'package:book_flutter/Config/Color.dart';
 import 'package:book_flutter/Pages/BookPage/BookPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class BookActionBtn extends StatelessWidget {
-  const BookActionBtn({super.key});
+  final String bookUrl;
+  const BookActionBtn({super.key, required this.bookUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,9 @@ class BookActionBtn extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Get.to(BookPage());
+              Get.to(BookPage(
+                bookUrl: bookUrl,
+              ));
             },
             child: Row(
               children: [
@@ -32,7 +34,7 @@ class BookActionBtn extends StatelessWidget {
                         color: Theme.of(context).colorScheme.background,
                         letterSpacing: 1.2,
                       ),
-                )
+                ),
               ],
             ),
           ),
@@ -54,7 +56,7 @@ class BookActionBtn extends StatelessWidget {
                       color: Theme.of(context).colorScheme.background,
                       letterSpacing: 1.5,
                     ),
-              )
+              ),
             ],
           )
         ],

@@ -5,11 +5,12 @@ class BookCard extends StatelessWidget {
   final String title;
   final VoidCallback ontap;
 
-  const BookCard(
-      {super.key,
-      required this.coverUrl,
-      required this.title,
-      required this.ontap});
+  const BookCard({
+    super.key,
+    required this.coverUrl,
+    required this.title,
+    required this.ontap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,19 @@ class BookCard extends StatelessWidget {
                       spreadRadius: 2,
                       blurRadius: 8,
                       offset: const Offset(2, 2),
-                    )
+                    ),
                   ],
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
+                  child: Image.network(
                     coverUrl,
                     width: 120,
+                    height: 160,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.broken_image, color: Colors.grey);
+                    },
                   ),
                 ),
               ),
@@ -48,8 +54,9 @@ class BookCard extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyMedium,
-              )
+              ),
             ],
           ),
         ),
